@@ -724,22 +724,26 @@ void SignVerifyTests::testEdSignVerify(const char* curve)
 	// Public Session keys
 	rv = generateED(curve, hSessionRW,IN_SESSION,IS_PUBLIC,IN_SESSION,IS_PUBLIC,hPuk,hPrk);
 	CPPUNIT_ASSERT(rv == CKR_OK);
-	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk,hPrk);
+	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk, hPrk);
+	signVerifyMulti(CKM_EDDSA, hSessionRO, hPuk, hPrk);
 
 	// Private Session Keys
 	rv = generateED(curve, hSessionRW,IN_SESSION,IS_PRIVATE,IN_SESSION,IS_PRIVATE,hPuk,hPrk);
 	CPPUNIT_ASSERT(rv == CKR_OK);
-	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk,hPrk);
+	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk, hPrk);
+	signVerifyMulti(CKM_EDDSA, hSessionRO, hPuk, hPrk);
 
 	// Public Token Keys
 	rv = generateED(curve, hSessionRW,ON_TOKEN,IS_PUBLIC,ON_TOKEN,IS_PUBLIC,hPuk,hPrk);
 	CPPUNIT_ASSERT(rv == CKR_OK);
-	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk,hPrk);
+	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk, hPrk);
+	signVerifyMulti(CKM_EDDSA, hSessionRO, hPuk, hPrk);
 
 	// Private Token Keys
 	rv = generateED(curve, hSessionRW,ON_TOKEN,IS_PRIVATE,ON_TOKEN,IS_PRIVATE,hPuk,hPrk);
 	CPPUNIT_ASSERT(rv == CKR_OK);
-	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk,hPrk);
+	signVerifySingle(CKM_EDDSA, hSessionRO, hPuk, hPrk);
+	signVerifyMulti(CKM_EDDSA, hSessionRO, hPuk, hPrk);
 }
 #endif
 
